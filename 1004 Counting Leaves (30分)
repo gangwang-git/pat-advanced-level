@@ -1,0 +1,51 @@
+
+
+
+solution2:
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+struct node{
+	int parent,child;
+};
+node tree[100];
+int level[100]{0};
+int main(){
+	int n,m,id,k,idn,maxlv=-1;
+	scanf("%d%d",&n,&m);
+	for(int i=0;i<100;i++){
+		tree[i].parent=-2;
+		tree[i].child=0;
+	}
+	for(int i=0;i<m;i++){
+		scanf("%d%d",&id,&k);
+		if(id==1)
+			tree[id].parent=-1;
+		for(int j=0;j<k;j++){
+			scanf("%d",&idn);
+			tree[idn].parent=id;
+			tree[id].child++;
+		}
+	}
+	for(int i=0;i<100;i++){
+		if(tree[i].parent!=-2 && tree[i].child==0){
+			int lv=0,k=i;
+			while(tree[k].parent!=-1){
+				lv++;
+				k=tree[k].parent;
+			}
+			if(lv>maxlv)
+				maxlv=lv;
+			level[lv]++;
+		}
+	}
+	for(int i=0;i<=maxlv;i++){
+		if(!i)
+			printf("%d",level[i]);
+		else
+			printf(" %d",level[i]);
+	}
+	return 0;
+} 
