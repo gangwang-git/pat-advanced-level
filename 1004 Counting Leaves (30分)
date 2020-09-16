@@ -1,4 +1,51 @@
+solution1(BFS):
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
 
+int level[100]{0};
+struct node{
+	int data;
+	int current_level;
+};
+vector<node> v[100];
+queue<node> q;
+int main(){
+	int m,n,id,k,idk,max_level=0;
+	scanf("%d%d",&n,&m);
+	for(int i=0;i<m;i++){
+		scanf("%d%d",&id,&k);
+		for(int j=0;j<k;j++){
+			scanf("%d",&idk);
+			node temp;
+			temp.data=idk;
+			temp.current_level=0;
+			v[id].push_back(temp);
+		}
+	}
+	node temp;
+	temp.data=1;
+	temp.current_level=0;
+	q.push(temp);
+	while(!q.empty()){
+		node tmp=q.front();
+		if(v[tmp.data].size()==0)
+			level[tmp.current_level]++;
+		for(int i=0;i<v[tmp.data].size();i++){
+			v[tmp.data][i].current_level=tmp.current_level+1;
+			if(v[tmp.data][i].current_level>max_level)
+				max_level=v[tmp.data][i].current_level;
+			q.push(v[tmp.data][i]);
+		}
+		q.pop();
+	}
+	for(int i=0;i<=max_level;i++){
+		if(!i) printf(" ");
+		printf("%d",level[i]);
+	}
+	return 0;
+} 
 
 
 solution2:
@@ -13,7 +60,7 @@ struct node{
 node tree[100];
 int level[100]{0};
 int main(){
-	int n,m,id,k,idn,maxlv=-1;
+	int n,m,id,k,idn,maxlv=0;
 	scanf("%d%d",&n,&m);
 	for(int i=0;i<100;i++){
 		tree[i].parent=-2;
