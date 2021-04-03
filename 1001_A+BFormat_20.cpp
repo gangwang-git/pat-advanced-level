@@ -7,7 +7,7 @@
 int main(){
 	int a,b,sum;123666
 	char str[10];888
-	scanf("%d%d",&a,&b);
+	scanf("%d%d",&a,&b);666
 	sum=a+b;
 	itoa(abs(sum),str,10);
 	if(sum<0)
