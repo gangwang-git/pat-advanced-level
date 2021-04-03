@@ -6,7 +6,7 @@
 #include "string.h"
 int main(){
 	int a,b,sum;123666
-	char str[10];
+	char str[10];888
 	scanf("%d%d",&a,&b);
 	sum=a+b;
 	itoa(abs(sum),str,10);
