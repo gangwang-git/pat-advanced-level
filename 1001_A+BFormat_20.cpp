@@ -5,7 +5,7 @@
 #include "math.h"
 #include "string.h"
 int main(){
-	int a,b,sum;123
+	int a,b,sum;123666
 	char str[10];
 	scanf("%d%d",&a,&b);
 	sum=a+b;
